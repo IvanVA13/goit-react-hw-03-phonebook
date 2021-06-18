@@ -1,0 +1,35 @@
+.contacts-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  margin: 0;
+  padding: 0 20px;
+
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.contacts-list-item {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 10px;
+
+  border: 2px solid #000000;
+}
+
+.contact-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  display: block;
+
+  font-weight: 500;
+
+  background-color: #ffffff;
+  border: 2px solid #f8a85e;
+  border-radius: 4px;
+  cursor: pointer;
+}
