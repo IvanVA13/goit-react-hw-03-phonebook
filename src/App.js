@@ -11,6 +11,22 @@ class App extends Component {
     filter: '',
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    this.state.contacts !== prevState.contacts &&
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    console.log('rend');
+  }
+
+  componentDidMount() {
+    const storageParse = JSON.parse(localStorage.getItem('contacts'));
+
+    storageParse !== null &&
+      storageParse.length !== 0 &&
+      this.setState({
+        contacts: storageParse,
+      });
+  }
+
   idGen = () => shortid.generate();
 
   submitHandler = data => {
@@ -40,21 +56,6 @@ class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));
 
-  componentDidUpdate(prevProps, prevState) {
-    this.state.contacts !== prevState.contacts &&
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    console.log('rend');
-  }
-
-  componentDidMount() {
-    const storageParse = JSON.parse(localStorage.getItem('contacts'));
-
-    storageParse !== null &&
-      storageParse.length !== 0 &&
-      this.setState({
-        contacts: storageParse,
-      });
-  }
   render() {
     const { contacts, filter } = this.state;
     const normalizedFilter = filter.toLowerCase();
